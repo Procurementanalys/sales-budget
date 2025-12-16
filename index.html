@@ -1616,9 +1616,9 @@
                 `;
             }).join('');
             
-            // Calculate grand total percentage - FIXED: menggunakan Budget - Sisa Budget untuk menghitung yang sudah terpakai
+            // Calculate grand total percentage
             const grandTotalPercentUsed = grandTotalBudget > 0 ? 
-                (((grandTotalBudget - grandTotalSisaBudget) / grandTotalBudget) * 100).toFixed(1) : 0;
+                ((grandTotalPOIssued / grandTotalBudget) * 100).toFixed(1) : 0;
             
             const grandTotalStatus = grandTotalSisaBudget < 0 ? 'status-over' : 'status-ok';
             const grandTotalStatusText = grandTotalSisaBudget < 0 ? 'Over Budget' : 'On Track';
@@ -1756,17 +1756,8 @@
             }
         }
 
-        // Initialize - Load Sales Dashboard first
-        loadDashboard();
-
-        // Auto refresh every 5 minutes for both dashboards
-        setInterval(() => {
-            if (document.getElementById('salesTab').classList.contains('active')) {
-                loadDashboard();
-            } else if (document.getElementById('procurementTab').classList.contains('active')) {
-                loadTracking();
-            }
-        }, 5 * 60 * 1000);
+        // Auto refresh telah dinonaktifkan
+        // Dashboard hanya akan di-load saat user klik tombol refresh atau switch tab
     </script>
 </body>
 </html>
