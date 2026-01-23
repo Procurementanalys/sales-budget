@@ -1616,9 +1616,9 @@
                 `;
             }).join('');
             
-            // Calculate grand total percentage
+            // Calculate grand total percentage - FIXED: Using PO Received / Budget
             const grandTotalPercentUsed = grandTotalBudget > 0 ? 
-                ((grandTotalPOIssued / grandTotalBudget) * 100).toFixed(1) : 0;
+                ((grandTotalPOReceived / grandTotalBudget) * 100).toFixed(1) : 0;
             
             const grandTotalStatus = grandTotalSisaBudget < 0 ? 'status-over' : 'status-ok';
             const grandTotalStatusText = grandTotalSisaBudget < 0 ? 'Over Budget' : 'On Track';
